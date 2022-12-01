@@ -1,0 +1,22 @@
+<div [formGroup]="frmGroup" class="image-container">
+  <div>
+    <label class="color-6 pb-8 d-block">
+      {{ fieldConfig.metadata.label }}
+      <span *ngIf="fieldConfig.required" class="color-red">*</span>
+    </label>
+    <app-image-uploader
+      [source]="formControl.value ? formControl.value: ''"
+      [domain]="imageDomain"
+      limitSize="limitSize"
+      [multiple]="false"
+      [endPoint]="imageEndPoint"
+      (click)="formControl.markAsDirty()"
+      (onChangeImage)="onChangeImage($event)"
+      [disabled]="readonly"
+    >
+    </app-image-uploader>
+    <mat-error>
+      <g-control-message [name]="fieldConfig.metadata.label" [control]="formControl"></g-control-message>
+    </mat-error>
+  </div>
+</div>

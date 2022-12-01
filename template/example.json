@@ -1,0 +1,112 @@
+{
+    "data": {
+    },
+    "fields": [
+        {
+            "default_value": "",
+            "fields": [
+                {
+                    "default_value": "",
+                    "fields": [],
+                    "metadata": {
+            "col": 12,
+                        "label": "Type"
+                    },
+                    "name": "type",
+                    "options": {
+                        "options": [
+                            {
+                                "name": "Daily Checkin",
+                                "value": "daily_checkin"
+                            },
+                            {
+                                "name": "Deeplink",
+                                "value": "deeplink"
+                            }
+                        ]
+                    },
+                    "required": true,
+                    "type": "select",
+                    "uuid": "f3d5010b-217b-40d5-aa38-20228a8b51ef",
+                    "validators": [],
+                    "value": ""
+                },
+                {
+                    "default_value": "",
+                    "fields": [],
+                    "metadata": {
+            "col": 12,
+                        "label": "Campaign Code"
+                    },
+                    "name": "code",
+                    "options": {
+                        "additional_params": {},
+                        "after_init_query_key": "name",
+                        "bind_key": "id",
+                        "bind_name": "name",
+                        "custom_bind_key": "id",
+                        "init_query_key": "id",
+                        "is_visible_depend_on": {
+                            "name": "type",
+                            "value": "daily_checkin"
+                        },
+                        "placeholder": "",
+                        "service_name": "getCampaign",
+                        "validate_message": "This field is required",
+                        "value_type": "number"
+                    },
+                    "required": false,
+                    "type": "gami_infinite_selection",
+                    "uuid": "e1b38abc-fa51-4d9f-bb77-8da07048545c",
+                    "validators": [],
+                    "value": ""
+                },
+                {
+                    "default_value": "",
+                    "fields": [],
+                    "metadata": {
+            "col": 12,
+                        "label": "Deeplink"
+                    },
+                    "name": "deeplink",
+                    "options": {
+                        "is_visible_depend_on": {
+                            "name": "type",
+                            "value": "deeplink"
+                        }
+                    },
+                    "required": false,
+                    "type": "link",
+                    "uuid": "f47621db-5a2c-4780-b9f3-b258ea16e34f",
+                    "validators": [
+                        {
+                            "name": "maxlength",
+                            "value": 2000
+                        }
+                    ],
+                    "value": "8888888888"
+                }
+            ],
+            "metadata": {
+            "col": 12,
+                "label": "Grid"
+            },
+            "name": "grid",
+            "options": {
+                "default_field": 2,
+                "limit": 2
+            },
+            "required": false,
+            "type": "repeater",
+            "uuid": "10f05514-513d-4721-b00a-f994628c6afd",
+            "validators": [],
+            "value": [
+            ]
+        }
+    ],
+    "metadata": {
+            "col": 12,
+        "label": "Extra Data"
+    },
+    "name": "extra_data"
+}

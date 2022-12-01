@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>{{ CONSTANTS.LABEL.CREATE_FIELD }} - {{ typeTitle }}</h1>
+
+<div mat-dialog-content>
+  <div [formGroup]="formFieldConfig">
+    <mat-form-field class="w-100-p">
+      <mat-label>{{ CONSTANTS.LABEL.NAME }}</mat-label>
+      <input matInput type="text" name="name" formControlName="name" [readonly]="isEdit">
+      <mat-error>
+        <g-control-message [name]="CONSTANTS.LABEL.NAME" [control]="formFieldConfig.controls['name']"></g-control-message>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100-p" *ngIf="formFieldConfig.controls['default_value']">
+      <mat-label>{{ CONSTANTS.LABEL.DEFAULT_VALUE }}</mat-label>
+      <input matInput type="text" name="default_value" formControlName="default_value">
+      <mat-error>
+        <g-control-message [name]="CONSTANTS.LABEL.DEFAULT_VALUE" [control]="formFieldConfig.controls['default_value']"></g-control-message>
+      </mat-error>
+    </mat-form-field>
+
+    <div [formGroup]="formFieldConfig.controls.metadata">
+      <mat-form-field class="w-100-p">
+        <mat-label>{{ CONSTANTS.LABEL.LABEL }}</mat-label>
+        <input matInput type="text" name="label" formControlName="label">
+        <mat-error>
+          <g-control-message [name]="CONSTANTS.LABEL.LABEL" [control]="formFieldConfig.controls['label']"></g-control-message>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="w-100-p">
+        <mat-label>{{ CONSTANTS.LABEL.COL }}</mat-label>
+        <mat-select formControlName="col">
+          <mat-option *ngFor="let item of [].constructor(12); index as i" [value]="i+1">
+              {{ i+1 }}
+          </mat-option>
+        </mat-select>
+        <mat-error>
+          <g-control-message [name]="CONSTANTS.LABEL.COL" [control]="formFieldConfig.controls['col']"></g-control-message>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-checkbox *ngIf="formFieldConfig.controls['required']" formControlName="required">{{ CONSTANTS.LABEL.REQUIRED }}</mat-checkbox>
+    <div class="w-100-p options-editor">
+      <div class="options-editor__header">
+        <mat-label>{{ CONSTANTS.LABEL.OPTIONS }}</mat-label>
+        <button color="primary" (click)="setDefaultOptions()">{{ CONSTANTS.LABEL.DEFAULT_OPTIONS }}</button>
+      </div>
+      <json-editor [options]="jsonEditorOptions" formControlName="options" #optionsJsonEditor>
+      </json-editor>
+    </div>
+  </div>
+</div>
+
+<div mat-dialog-actions class="add-field-action">
+  <button mat-raised-button color="warn" (click)="onClose()">{{ CONSTANTS.LABEL.CANCEL }}</button>
+  <button mat-raised-button class="mat-btn mat-light-green-bg" mat-button (click)="onCreate()" cdkFocusInitial>{{ isCreate ? CONSTANTS.LABEL.CREATE : CONSTANTS.LABEL.UPDATE}}</button>
+</div>

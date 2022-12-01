@@ -1,0 +1,25 @@
+<div [formGroup]="frmGroup">
+  <mat-form-field class="w-100-p g-date-picker" [appearance]="appearance">
+    <label class="color-6 pb-8 d-block">
+    {{ fieldConfig.metadata.label }}
+      <span *ngIf="fieldConfig.required" class="color-red">*</span>
+    </label>
+    <input
+      matInput 
+      [placeholder]="fieldConfig.metadata.label" 
+      [id]="gDateTime" 
+      [min]="minDate" 
+      [max]="maxDate"
+      [formControlName]="fieldConfig.name" 
+      [owlDateTime]="gDateTime" 
+      [owlDateTimeTrigger]="gDateTime" 
+      [min]="minDate"
+      [readonly]="readonly"
+    />
+    <mat-icon matSuffix [owlDateTimeTrigger]="gDateTime">date_range</mat-icon>
+    <owl-date-time [disabled]="readonly" #gDateTime [showSecondsTimer]="true"></owl-date-time>
+    <mat-error>
+      <g-control-message [name]="fieldConfig.metadata.label" [control]="formControl"></g-control-message>
+    </mat-error>
+  </mat-form-field>
+</div>

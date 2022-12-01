@@ -1,0 +1,19 @@
+<div [ngClass]="{'display-none': !isVisibility}">
+  <app-mat-select-infinite
+    [appearance]="appearance"
+    [valueType]="fieldConfig.options.value_type"
+    [frmGroup]="frmGroup"
+    [validateMessage]="fieldConfig.options.validate_message"
+    [additionalParams]="fieldConfig.options.additional_params"
+    [serviceName]="fieldConfig.options.service_name"
+    [bindKey]="fieldConfig.options.bind_key"
+    [bindName]="fieldConfig.options.bind_name"
+    [customBindKey]="fieldConfig.options.custom_bind_key"
+    [key]="fieldConfig.name"
+    [searchQuery]="searchQueryKey"
+    [placeholder]="fieldConfig.metadata.label"
+    [required]="fieldConfig.required"
+    [disabled]="readonly"
+  >
+  </app-mat-select-infinite>
+</div>

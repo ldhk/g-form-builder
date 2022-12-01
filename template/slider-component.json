@@ -1,0 +1,61 @@
+{
+    "data": {},
+    "metadata": {
+            "col": 12,
+      "label": "Extra Data"
+    },
+    "name": "extra_data",
+    "fields": [
+      {
+        "type": "repeater",
+        "name": "slider_items",
+        "default_value": "",
+        "options": {
+          "limit": 10,
+          "default_field": 1
+        },
+        "validators": [],
+        "metadata": {
+            "col": 12,
+          "label": "Slider Items"
+        },
+        "fields": [
+          {
+            "type": "link",
+            "name": "deeplink",
+            "default_value": "",
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 2000
+              }
+            ],
+            "metadata": {
+            "col": 6,
+              "label": "Deeplink"
+            },
+            "fields": [],
+            "required": true,
+            "value": ""
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "default_value": "",
+            "options": {},
+            "validators": [],
+            "metadata": {
+            "col": 6,
+              "label": "Image"
+            },
+            "fields": [],
+            "required": true,
+            "value": ""
+          }
+        ],
+        "required": false,
+        "value": []
+      }
+    ]
+  }

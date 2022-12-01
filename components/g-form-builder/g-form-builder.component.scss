@@ -1,0 +1,11 @@
+@import 'src/app/pages/loyalty/common/common.scss';
+@import 'src/app/pages/loyalty/common/module/g-form-builder/common/style.scss';
+
+  .title-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .setting-button {
+    margin: 5px 0;
+  }

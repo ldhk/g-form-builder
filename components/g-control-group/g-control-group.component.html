@@ -1,0 +1,26 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start"
+  class="g-control-group group-container mt-24"
+>
+  <div class="group-container__title">{{ fieldConfig.metadata.label }}</div>
+  <div class="group-container__content">
+    <section fxLayout fxLayout="row wrap" fxLayoutAlign="start start">
+      <ng-container *ngFor="let field of fieldConfig.fields" [ngSwitch]="field.type">
+        <g-control 
+          *ngSwitchDefault
+          [fieldConfig]="field" 
+          [frmGroup]="formControl" 
+          [rootConfig]="jsonData"
+          [ngClass]="[formControl.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"></g-control>
+        <g-control-group 
+          *ngSwitchCase="CONSTANTS.CONTROL_TYPE.GROUP"
+          [fieldConfig]="field" 
+          [frmGroup]="formControl" 
+          [rootConfig]="jsonData"
+          [ngClass]="[formControl.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"></g-control-group>
+      </ng-container>
+    </section>
+    <ng-content></ng-content>
+  </div>
+</div>

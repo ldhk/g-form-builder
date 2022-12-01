@@ -1,0 +1,71 @@
+<table class="detail-table">
+  <thead>
+    <tr>
+      <th width="30%">{{ dataFields.metadata.label }}</th>
+      <th>{{ 'GAMIFICATION.CURRENT' | translate }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let field of dataFields.fields">
+      <ng-container [ngSwitch]="field.type">
+        <tr *ngSwitchDefault>
+          <td>{{ field.metadata.label }}</td>
+          <td [ngSwitch]="field.type" >
+            <img *ngSwitchCase="CONSTANTS.CONTROL_TYPE.IMAGE" class="image-review" [src]="field.value" />
+            <div *ngSwitchCase="CONSTANTS.CONTROL_TYPE.COLOR" class="color-wrapper">
+              <span class="color-dot" [style.background-color]="field.value"></span>
+              {{ field.value }}
+            </div>
+            <ng-container *ngSwitchDefault>{{ field.value }}</ng-container>
+          </td>
+        </tr>
+
+        <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.GROUP">
+          <tr class="label-type">
+            <th>{{ field.metadata.label }}</th>
+          </tr>
+          <tr *ngFor="let child of field.fields">
+            <td>{{ child.metadata.label }}</td>
+            <td [ngSwitch]="child.type" >
+              <img *ngSwitchCase="CONSTANTS.CONTROL_TYPE.IMAGE" class="image-review" [src]="child.value" />
+              <div *ngSwitchCase="CONSTANTS.CONTROL_TYPE.COLOR" class="color-wrapper">
+                <span class="color-dot" [style.background-color]="child.value"></span>
+                {{ child.value }}
+              </div>
+              <ng-container *ngSwitchDefault>{{ child.value }}</ng-container>
+            </td>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.REPEATER">
+          <tr class="label-type">
+            <th>{{ field.metadata.label }}</th>
+          </tr>
+          <ng-container *ngFor="let item of field.value; index as i">
+            <tr class="label-type">
+              <th><h4>{{ field.metadata.label }} - {{ (i + 1) }}</h4></th>
+              <td>
+                <table class="detail-table">
+                  <tbody>
+                    <tr *ngFor="let itemField of field.fields">
+                      <td>{{ itemField.metadata.label }}</td>
+                      <td [ngSwitch]="itemField.type" >
+                        <img *ngSwitchCase="CONSTANTS.CONTROL_TYPE.IMAGE" class="image-review" [src]="item[itemField.name]" />
+                        <div *ngSwitchCase="CONSTANTS.CONTROL_TYPE.COLOR" class="color-wrapper">
+                          <span class="color-dot" [style.background-color]="item[itemField.name]"></span>
+                          {{ item[itemField.name] }}
+                        </div>
+                        <ng-container *ngSwitchDefault>{{ item[itemField.name] }}</ng-container> 
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>

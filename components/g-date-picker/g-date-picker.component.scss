@@ -1,0 +1,8 @@
+@import 'src/app/pages/loyalty/common/common.scss';
+@import 'src/app/pages/loyalty/common/module/g-form-builder/common/style.scss';
+
+.g-date-picker {
+    ::ng-deep .mat-form-field-flex {
+        align-items: flex-end;
+    }
+}

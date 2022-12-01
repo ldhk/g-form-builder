@@ -1,0 +1,101 @@
+@import 'src/app/pages/loyalty/common/common.scss';
+@import "~jsoneditor/dist/jsoneditor.min.css";
+textarea.jsoneditor-text{
+  width: 100%;
+  min-height:350px;
+  padding: 10px;
+}
+
+:host ::ng-deep json-editor,
+:host ::ng-deep json-editor .jsoneditor,
+:host ::ng-deep json-editor > div,
+:host ::ng-deep json-editor jsoneditor-outer {
+  height: 200px;
+  background-color: aliceblue;
+}
+
+:host ::ng-deep textarea.jsoneditor-text{
+  width: 100%;
+  height: 150px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+
+::ng-deep .dialog-field-config
+{ 
+    width: 75vw;
+    height: 95vh;
+    .mat-dialog-container {
+      padding: 28px 24px!important;
+    }
+    dialog-field-config {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      width: 100%;
+    }
+    
+}
+
+::ng-deep .dialog-confirm
+{ 
+    width: 20vw;
+    height: 20vh;
+    .mat-dialog-container {
+      padding: 28px 24px!important;
+    }
+    g-dialog-confirm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      width: 100%;
+    }
+    
+}
+
+.mat-dialog-content {
+  max-height: 70vh;
+}
+
+.add-field-action {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.options-editor {
+  margin-top: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    max-height: 3em;
+    align-items: center;
+    padding: 10px 0;
+
+    button {
+      padding: 6px 12px;
+      border-radius: 8px;
+      background-color: lightseagreen;
+      color: white;
+
+      &:hover {
+        cursor: pointer;
+        transition: all 0.5s;
+        transform: scale(1.05);
+        filter: brightness(1.1);
+      }
+
+      &:active {
+        box-shadow: 0 2px #3e8e41;
+        transform: translateY(4px);
+      }
+    }
+  }
+}
+

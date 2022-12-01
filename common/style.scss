@@ -1,0 +1,36 @@
+.readonly {
+    pointer-events: none;
+    background-color: #d3d3d370;
+    color: lightgray!important;
+}
+
+$grid__cols: 12;
+@for $i from 1 through $grid__cols {
+    .col-#{$i} {
+    padding-right: 10px;
+    flex-basis: (100 / ($grid__cols / $i) ) * 1%;
+    }
+}
+
+::ng-deep {
+    g-date-picker {
+        .mat-form-field-flex {
+            padding-top: 0!important;
+        }
+        .mat-form-field-infix {
+            border-top: 0!important;
+        }
+    }
+
+    gami-select-infinite {
+        .mat-form-field-flex {
+            padding-top: 1.095em!important;
+        }
+    }
+    
+    g-select {
+        .mat-form-field-infix {
+            padding-top: 0.75em!important;
+        }
+    }
+} 

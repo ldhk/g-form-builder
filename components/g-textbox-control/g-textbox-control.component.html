@@ -1,0 +1,32 @@
+<div [formGroup]="frmGroup" class="w-100-p" [ngClass]="{'display-none': !isVisibility}">
+  <mat-form-field class="w-100-p g-textbox-field" [appearance]="appearance">
+    <mat-label [attr.for]="fieldConfig.name">{{ fieldConfig.metadata.label }}
+      <span *ngIf="fieldConfig.required" class="color-red">*</span>
+    </mat-label>
+    <input 
+      *ngIf="fieldConfig.type !== CONSTANTS.CONTROL_TYPE.TEXTAREA" 
+      matInput 
+      [type]="fieldConfig.type" 
+      name="{{ fieldConfig.name }}" 
+      [formControlName]="fieldConfig.name" 
+      [readonly]="readonly" 
+      [ngClass]="{'readonly' : readonly}">
+    <textarea
+      *ngIf="fieldConfig.type == CONSTANTS.CONTROL_TYPE.TEXTAREA"
+      trim="blur"
+      cdkTextareaAutosize
+      cdkAutosizeMinRows="3"
+      cdkAutosizeMaxRows="3"
+      class="w-100-p"
+      matInput
+      [formControlName]="fieldConfig.name"
+      [placeholder]="fieldConfig.metadata.label"
+      [readonly]="readonly" 
+      [ngClass]="{'readonly' : readonly}"
+    ></textarea>
+    <mat-hint *ngIf="fieldConfig.metadata.hint">{{ fieldConfig.metadata.hint }}</mat-hint>
+    <mat-error>
+      <g-control-message [name]="fieldConfig.metadata.label" [control]="formControl"></g-control-message>
+    </mat-error>
+  </mat-form-field>
+</div>

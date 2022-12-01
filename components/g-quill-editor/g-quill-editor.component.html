@@ -1,0 +1,17 @@
+<div class="mb-20" [formGroup]="frmGroup">
+  <mat-label class="pb-8" [attr.for]="fieldConfig.name">{{ fieldConfig.metadata.label }}
+    <span *ngIf="fieldConfig.required" class="color-red">*</span>
+  </mat-label>
+  <app-quill-editor
+      [domain]="domain"
+      [urlUploadImage]="urlUploadImage"
+      [style]="{ height: '400px' }"
+      [formControlData]="formControl"
+      [isFocus]="false"
+      [readOnly]="readonly"
+    >
+    </app-quill-editor>
+    <mat-error>
+      <g-control-message [name]="fieldConfig.metadata.label" [control]="formControl"></g-control-message>
+    </mat-error>
+</div>

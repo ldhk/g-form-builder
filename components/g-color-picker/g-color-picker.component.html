@@ -1,0 +1,38 @@
+<div class="g-color-picker" [formGroup]="frmGroup">
+  <mat-form-field class="w-100-p" [appearance]="appearance">
+    <mat-label>{{ fieldConfig.metadata.label }}
+      <span *ngIf="fieldConfig.required" class="color-red">*</span>
+    </mat-label>
+    <input
+      class="text-input"
+      matInput
+      placeholder="{{ fieldConfig.metadata.label }}"
+      [formControlName]="fieldConfig.name"
+      [value]="formControl.value"
+      [colorPicker]="formControl.value"
+      [cpPosition]="options.position"
+      (cpInputChange)="formControl.value?.markAsDirty()"
+      [cpPositionOffset]="options.positionOffset"
+      [cpSaveClickOutside]="options.saveClickOutside"
+      [cpOutputFormat]="options.format"
+      [(cpToggle)]="toggle"
+      [cpOKButton]="true"
+      [cpCancelButton]="true"
+      (colorPickerChange)="formControl.setValue($event)"
+      [cpDisabled]="readonly"
+      [readonly]="readonly"
+      [ngClass]="{'readonly' : readonly}"
+    />
+      <mat-error>
+        <g-control-message [name]="fieldConfig.metadata.label" [control]="formControl"></g-control-message>
+      </mat-error>
+  </mat-form-field>
+  <button 
+    mat-button 
+    class="mat-icon-circle g-color-picker__toggle" 
+    [attr.style]="backgroundColorCSS | safeStyle" 
+    mat-icon-button 
+    [disabled]="readonly"
+    (click)="toggle=!toggle" matTooltip="Choose Color">
+  </button>
+</div>

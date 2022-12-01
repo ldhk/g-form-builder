@@ -1,0 +1,115 @@
+<div matDialogTitle class="pop-head dialog-header dialog-setting-header" fxLayout="row"
+  fxLayoutAlign="space-between center">
+  <ng-container>
+    <h1>
+      {{ CONSTANTS.LABEL.SETTING }} - {{ data.metadata.label }}
+    </h1>
+  </ng-container>
+
+  <button mat-button class="mat-icon-circle btn-close" mat-icon-button mat-dialog-close
+    (click)="dialogRef.close(false)">
+    <mat-icon class="active-icon s-20 color-9">close</mat-icon>
+  </button>
+</div>
+<div class="dialog-content-wrapper dialog-style dialog-large dialog-setting-content">
+  <ng-container>
+    <div class="mb-10">
+      <button mat-raised-button class="button-create mat-btn mat-light-green-bg" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>{{ CONSTANTS.ICON.ADD }}</mat-icon>
+        <span>{{ CONSTANTS.LABEL.ADD }}</span>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let key of menuItemField">
+          <button mat-menu-item [disabled]="!CONTROL_TYPE_CONFIG[key].IS_ENABLE" (click)="addField(key, data, CONSTANTS.ACTION_TYPE.CREATE)">
+            <mat-icon>{{ CONTROL_TYPE_CONFIG[key].ICON }}</mat-icon>
+            <span>{{ CONTROL_TYPE_CONFIG[key].LABEL }}</span>
+          </button>
+        </ng-container>
+      </mat-menu>
+    </div>
+
+    <div cdkDropList (cdkDropListDropped)="drop($event,data.fields)">
+      <div *ngFor="let field of data.fields; let i = index" cdkDrag>
+          <mat-accordion>
+            <mat-expansion-panel expanded="false" [hideToggle]="!field.fields" [ngClass]="{'special-field': isSpecialField(field.type)}">
+              <mat-expansion-panel-header>
+                <mat-panel-title class="item-center">
+                 <div class="flex item-center gap-5">
+                    <mat-icon>{{ CONTROL_TYPE_CONFIG[field.type].ICON }}</mat-icon>
+                    <div> 
+                      <strong>{{ field.metadata.label }}</strong>
+                      [{{ CONTROL_TYPE_CONFIG[field.type].LABEL }}]
+                      <span *ngIf="field.metadata.col">[{{ CONSTANTS.LABEL.LAYOUT }} - {{ field.metadata.col }}]</span> 
+                    </div>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description class="flex-end" [ngClass]="{'mr-24': !field.fields }">
+                  <button mat-button class="mat-icon-circle" mat-icon-button (click)="$event.stopPropagation();addField(field.type, data, CONSTANTS.ACTION_TYPE.EDIT, field)">
+                    <mat-icon color="primary">edit</mat-icon>
+                  </button>
+                  <button mat-button class="mat-icon-circle" mat-icon-button (click)="$event.stopPropagation();removeField(data.fields, field)">
+                    <mat-icon color="warn">delete</mat-icon>
+                  </button>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <div *ngIf="isSpecialField(field.type)" class="mt-10 mb-10">
+                <button mat-raised-button class="button-create mat-btn mat-light-green-bg" mat-button [matMenuTriggerFor]="menu2">
+                  <mat-icon>{{ CONSTANTS.ICON.ADD }}</mat-icon>
+                  <span>{{ CONSTANTS.LABEL.ADD }}</span>
+                </button>
+                <mat-menu #menu2="matMenu">
+                  <ng-container *ngFor="let key of menuItemField">
+                    <button mat-menu-item [disabled]="!CONTROL_TYPE_CONFIG[key].IS_ENABLE || isSpecialField(key)" (click)="addField(key, data.fields[i], CONSTANTS.ACTION_TYPE.CREATE)">
+                      <mat-icon>{{ CONTROL_TYPE_CONFIG[key].ICON }}</mat-icon>
+                      <span>{{ CONTROL_TYPE_CONFIG[key].LABEL }}</span>
+                    </button>
+                  </ng-container>
+                </mat-menu>
+              </div> 
+                 
+              <div [ngClass]="{ 'form-list': field.fields.length }" cdkDropList *ngIf="field.fields" (cdkDropListDropped)="drop($event, field.fields)">
+                <div *ngFor="let field of field.fields" cdkDrag>
+                  <div class="form-box">
+                      <div class="flex item-center gap-5">
+                        <mat-icon>{{ CONTROL_TYPE_CONFIG[field.type].ICON }}</mat-icon> 
+                        <div> 
+                          <strong>{{ field.metadata.label }}</strong>
+                          [{{ CONTROL_TYPE_CONFIG[field.type].LABEL }}]
+                          <span *ngIf="field.metadata.col">[{{ CONSTANTS.LABEL.LAYOUT }} - {{ field.metadata.col }}]</span> 
+                        </div>
+                      </div>
+                      <div>
+                        <button mat-button class="mat-icon-circle" mat-icon-button (click)="addField(field.type, data.fields[i], CONSTANTS.ACTION_TYPE.EDIT, field)">
+                          <mat-icon color="primary">edit</mat-icon>
+                        </button>
+                        <button mat-button class="mat-icon-circle" mat-icon-button (click)="removeField(data.fields[i].fields,field)">
+                          <mat-icon color="warn">delete</mat-icon>
+                        </button>
+                      </div>
+                      
+                  </div>
+                </div>
+              </div> 
+
+            </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+  </ng-container>
+</div>
+<ng-container>
+  <div class="footer w-100-p dialog-bottom" fxLayout="row" fxLayoutAlign="center">
+    <div class="d-inline-block">
+    </div>
+    <div class="d-inline-block">
+      <!-- Edit -->
+      <button class="mat-btn mat-light-green-bg ml-12" color="primary" mat-raised-button [mat-dialog-close]="data"
+        cdkFocusInitia>
+        {{ 'COMMON.SAVE' | translate }}
+      </button>
+    </div>
+
+  </div>
+</ng-container>

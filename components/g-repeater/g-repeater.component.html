@@ -1,0 +1,28 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start"
+  class="group-container mt-24"
+  [formGroup]="frmGroup">
+  <div class="group-container__title">{{ fieldConfig.metadata.label }}</div>
+  <div class="group-container__content">
+    <div formArrayName="{{ fieldConfig.name }}" *ngIf="formArray && formArray.length" class="repeater-container">
+      <ng-container *ngFor="let frmItem of formArray.controls; index as i">
+        <div class="repeat-item__header">
+          <h4><strong>{{ fieldConfig.metadata.label + ' ' + (i+1) }}</strong></h4>
+          <button *ngIf="isCanDelete" mat-button class="mat-icon-circle" mat-icon-button (click)="removeItemToFormArray(i)" mat-button>
+            <mat-icon color="warn">{{ CONSTANTS.ICON.DELETE }}</mat-icon>
+          </button>
+        </div>
+        <div fxLayout fxLayout="row wrap" fxLayoutAlign="start start">
+          <g-control *ngFor="let field of fieldConfig.fields" [fieldConfig]="field" [frmGroup]="frmItem" [rootConfig]="rootConfig" [ngClass]="[frmItem.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"></g-control>
+        </div>
+      </ng-container>
+    </div>
+    <div class="repeater-footer" *ngIf="isCanAdd">
+      <button mat-raised-button class="button-create mat-btn mat-light-green-bg" (click)="addItemToFormArray(true)" mat-button>
+        <mat-icon>{{ CONSTANTS.ICON.ADD }}</mat-icon>
+        <span>{{ CONSTANTS.LABEL.ADD }}</span>
+      </button>
+    </div>
+  </div>
+</div>

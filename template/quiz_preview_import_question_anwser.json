@@ -1,0 +1,239 @@
+{
+    "name": "preview_import_question_data",
+    "fields": [
+      {
+        "type": "repeater",
+        "name": "questions",
+        "default_value": null,
+        "options": {
+          "default_field": 1,
+          "limit": 10
+        },
+        "validators": [],
+        "metadata": {
+            "col": 12,
+            "label": "Question"
+        },
+        "fields": [
+          {
+            "type": "select",
+            "name": "level",
+            "default_value": null,
+            "options": {
+              "options": [
+                {
+                  "value": 1,
+                  "name": "Easy"
+                },
+                {
+                  "value": 2,
+                  "name": "Normal"
+                },
+                {
+                  "value": 3,
+                  "name": "Difficult"
+                }
+              ]
+            },
+            "validators": [],
+            "metadata": {
+            "col": 3,
+              "label": "Level"
+            },
+            "fields": [],
+            "required": true,
+            "value": null
+          },
+          {
+            "type": "number",
+            "name": "correct_point",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "max",
+                "value": 999999999999
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Right Point"
+            },
+            "fields": [],
+            "required": true,
+            "value": null,
+            "uuid": "eb92e970-1125-4a4f-85c0-61cc911fde7c"
+          },
+          {
+            "type": "number",
+            "name": "wrong_point",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "max",
+                "value": 999999999999
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Wrong Point"
+            },
+            "fields": [],
+            "required": true,
+            "value": null
+          },
+          {
+            "type": "text",
+            "name": "result_id",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Correct Answer"
+            },
+            "fields": [],
+            "required": true,
+            "value": null
+          },
+          {
+            "type": "textarea",
+            "name": "content",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 9,
+              "label": "Question"
+            },
+            "fields": [],
+            "required": true,
+            "value": null
+          },
+          {
+            "type": "image",
+            "name": "image",
+            "default_value": null,
+            "options": {},
+            "validators": [],
+            "metadata": {
+            "col": 3,
+              "label": "Image"
+            },
+            "fields": [],
+            "required": true,
+            "value": null
+          },
+          {
+            "type": "text",
+            "name": "answer_1",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Answer 1"
+            },
+            "fields": [],
+            "required": false,
+            "value": null
+          },
+          {
+            "type": "text",
+            "name": "answer_2",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Answer 2"
+            },
+            "fields": [],
+            "required": false,
+            "value": null
+          },
+          {
+            "type": "text",
+            "name": "answer_3",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Answer 3"
+            },
+            "fields": [],
+            "required": false,
+            "value": null
+          },
+          {
+            "type": "text",
+            "name": "answer_4",
+            "default_value": null,
+            "options": {},
+            "validators": [
+              {
+                "name": "maxlength",
+                "value": 255
+              }
+            ],
+            "metadata": {
+            "col": 3,
+              "label": "Answer 4"
+            },
+            "fields": [],
+            "required": false,
+            "value": null
+          }
+        ],
+        "required": false,
+        "value": null
+      }
+    ],
+    "data": {
+      "questions": [
+        {
+          "level": null,
+          "image": null,
+          "correct_point": null,
+          "wrong_point": null,
+          "result_id": null,
+          "content": null,
+          "answer_1": null,
+          "answer_2": null,
+          "answer_3": null,
+          "answer_4": null
+        }
+      ]
+    },
+    "metadata": {
+            "col": 12,
+      "label": "Preview Questions & Answers"
+    }
+  }

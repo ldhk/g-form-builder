@@ -1,0 +1,17 @@
+@import 'src/app/pages/loyalty/common/common.scss';
+
+.repeater-footer {
+    display: flex;
+    justify-content: center;
+    padding: 14px 0;
+}
+
+.repeat-item {
+    &__header {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: row;
+        max-height: 3em;
+        align-items: center;
+    }
+}

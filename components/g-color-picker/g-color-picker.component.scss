@@ -1,0 +1,13 @@
+@import 'src/app/pages/loyalty/common/module/g-form-builder/common/style.scss';
+
+.g-color-picker {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    &__toggle { 
+        margin-top: 0.4em;
+        border: solid thin #a49b9b;
+        margin-top: 20px;
+    }
+}

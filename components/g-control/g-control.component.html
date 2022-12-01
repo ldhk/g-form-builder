@@ -1,0 +1,32 @@
+<ng-container [ngSwitch]="fieldConfig.type">
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.TEXT">
+    <g-textbox-control [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-textbox-control>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.NUMBER">
+    <g-textbox-control [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-textbox-control>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.LINK">
+    <g-textbox-control [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-textbox-control>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.TEXTAREA">
+    <g-textbox-control [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-textbox-control>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.COLOR">
+      <g-color-picker [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-color-picker>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.IMAGE">
+    <g-image-upload [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-image-upload>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.GAMI_INFINITE_SELECTION">
+    <gami-select-infinite [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></gami-select-infinite>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.SELECT">
+    <g-select [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-select>
+  </ng-container>
+  <ng-container class="w-50-p" *ngSwitchCase="CONSTANTS.CONTROL_TYPE.DATE_PICKER">
+    <g-date-picker [fieldConfig]="fieldConfig" [frmGroup]="frmGroup" [rootConfig]="rootConfig"></g-date-picker>
+  </ng-container>
+  <ng-container *ngSwitchCase="CONSTANTS.CONTROL_TYPE.QUILL_EDITOR">
+    <g-quill-editor [fieldConfig]="fieldConfig" [frmGroup]="frmGroup"  [rootConfig]="rootConfig"></g-quill-editor>
+  </ng-container>
+</ng-container>

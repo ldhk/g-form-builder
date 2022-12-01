@@ -1,0 +1,305 @@
+{
+  "data": {},
+  "fields": [
+    {
+      "default_value": "",
+      "fields": [],
+      "metadata": {
+            "col": 2,
+        "label": "Status"
+      },
+      "name": "status",
+      "options": {
+        "options": [
+          {
+            "name": "Active",
+            "value": "ACTIVE"
+          },
+          {
+            "name": "InActive",
+            "value": "INACTIVE"
+          }
+        ]
+      },
+      "required": true,
+      "type": "select",
+      "validators": []
+    },
+    {
+      "type": "link",
+      "name": "deeplink",
+      "default_value": null,
+      "options": {},
+      "validators": [
+        {
+          "name": "maxlength",
+          "value": 2000
+        }
+      ],
+      "metadata": {
+            "col": 10,
+        "label": "Deeplink"
+      },
+      "fields": [],
+      "required": true
+    },
+    {
+      "default_value": "",
+      "fields": [],
+      "metadata": {
+            "col": 12,
+        "label": "Banner"
+      },
+      "name": "banner",
+      "options": {},
+      "required": true,
+      "type": "image",
+      "validators": []
+    },
+    {
+      "default_value": "",
+      "fields": [],
+      "metadata": {
+            "col": 6,
+        "label": "Start Time"
+      },
+      "name": "start_time",
+      "options": {
+        "max": {
+          "type": "control",
+          "value": "end_time"
+        },
+      "readonly": {
+          "depend_on": {
+              "condition": "$created && $moment($currentValue).isBefore($moment($today))"
+          }
+      }
+      },
+      "required": true,
+      "type": "date_picker",
+      "validators": []
+    },
+    {
+      "default_value": "",
+      "fields": [],
+      "metadata": {
+            "col": 6,
+        "label": "End Time"
+      },
+      "name": "end_time",
+      "options": {
+        "readonly": {
+          "depend_on": {
+              "condition": "$created && $moment($form('start_time')).isBefore($moment($today))"
+          }
+      }
+      },
+      "required": true,
+      "type": "date_picker",
+      "validators": []
+    },
+    {
+      "default_value": "",
+      "fields": [
+        {
+          "type": "text",
+          "name": "title",
+          "default_value": null,
+          "options": {},
+          "validators": [
+            {
+              "name": "maxlength",
+              "value": 255
+            }
+          ],
+          "metadata": {
+            "col": 6,
+            "label": "Title"
+          },
+          "fields": [],
+          "required": false
+        },
+        {
+          "type": "color",
+          "name": "title_color",
+          "default_value": "#FFFFFF",
+          "options": {},
+          "validators": [
+            {
+              "name": "pattern",
+              "pattern": "^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$"
+            }
+          ],
+          "metadata": {
+            "col": 6,
+            "label": "Title Color"
+          },
+          "fields": [],
+          "required": false
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 6,
+            "label": "Background Banner"
+          },
+          "name": "background_banner",
+          "options": {},
+          "required": true,
+          "type": "image",
+          "validators": []
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 6,
+            "label": "Campaign Map"
+          },
+          "name": "campaign_map",
+          "options": {},
+          "required": true,
+          "type": "image",
+          "validators": []
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 6,
+            "label": "Campaign Logo"
+          },
+          "name": "campaign_logo",
+          "options": {},
+          "required": true,
+          "type": "image",
+          "validators": []
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 6,
+            "label": "Campaign Map Component"
+          },
+          "name": "campaign_map_component",
+          "options": {},
+          "required": true,
+          "type": "image",
+          "validators": []
+        }
+      ],
+      "metadata": {
+            "col": 12,
+        "label": "Visualization"
+      },
+      "name": "visualization",
+      "options": {},
+      "required": false,
+      "type": "group",
+      "validators": []
+    },
+    {
+      "default_value": "",
+      "fields": [
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 4,
+            "label": "Type"
+          },
+          "name": "type",
+          "options": {
+            "options": [
+              {
+                "name": "---",
+                "value": null
+              },
+              {
+                "name": "Daily Checkin",
+                "value": "daily_checkin"
+              },
+              {
+                "name": "Deeplink",
+                "value": "deeplink"
+              }
+            ]
+          },
+          "required": false,
+          "type": "select",
+          "validators": []
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 8,
+            "label": "Campaign Code"
+          },
+          "name": "code",
+          "options": {
+            "additional_params": {},
+            "after_init_query_key": "name",
+            "bind_key": "id",
+            "bind_name": "name",
+            "custom_bind_key": "id",
+            "init_query_key": "id",
+            "is_visible_depend_on": {
+              "name": "type",
+              "value": "daily_checkin"
+            },
+            "placeholder": "",
+            "service_name": "getCampaign",
+            "validate_message": "This field is required",
+            "value_type": "number"
+          },
+          "required": true,
+          "type": "gami_infinite_selection",
+          "validators": []
+        },
+        {
+          "default_value": "",
+          "fields": [],
+          "metadata": {
+            "col": 8,
+            "label": "Deeplink"
+          },
+          "name": "deeplink",
+          "options": {
+            "is_visible_depend_on": {
+              "name": "type",
+              "value": "deeplink"
+            }
+          },
+          "required": true,
+          "type": "link",
+          "validators": [
+            {
+              "name": "maxlength",
+              "value": 2000
+            }
+          ]
+        }
+      ],
+      "metadata": {
+            "col": 12,
+        "label": "Grid"
+      },
+      "name": "grid",
+      "options": {
+        "default_field": 9,
+        "limit": 9
+      },
+      "required": false,
+      "type": "repeater",
+      "validators": []
+    }
+  ],
+  "metadata": {
+            "col": 12,
+    "label": "Extra Data"
+  },
+  "name": "extra_data"
+}

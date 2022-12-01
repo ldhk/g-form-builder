@@ -1,0 +1,44 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start"
+  class="group-container mt-24"
+>
+  <div class="group-container__title">
+    <div class="title-wrapper">
+      <label fxFlex="50" class="title-info mt-10">{{ metadata.label }}</label>
+      <button  mat-button class="mat-icon-circle setting-button" mat-icon-button (click)="openDialog()">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </div>
+  </div>
+ 
+  <div class="group-container__content">
+        <section fxLayout fxLayout="row wrap" fxLayoutAlign="start start">
+            <ng-container *ngFor="let field of fieldControls" [ngSwitch]="field.type">
+              <g-control 
+              *ngSwitchDefault
+              [fieldConfig]="field" 
+              [frmGroup]="frm" 
+              [rootConfig]="jsonData" 
+              [ngClass]="[frm.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"
+              ></g-control>
+              <g-control-group 
+                *ngSwitchCase="CONSTANTS.CONTROL_TYPE.GROUP"
+                [fieldConfig]="field" 
+                [frmGroup]="frm" 
+                [rootConfig]="jsonData" 
+                [ngClass]="[frm.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"
+              ></g-control-group>
+              <g-repeater 
+                *ngSwitchCase="CONSTANTS.CONTROL_TYPE.REPEATER"
+                [fieldConfig]="field" 
+                [frmGroup]="frm" 
+                [rootConfig]="jsonData" 
+                [ngClass]="[frm.controls[field.name].disabled ? 'display-none' : '', field.metadata.col ? 'col-' + field.metadata.col : 'col-12']"
+              ></g-repeater>
+            </ng-container>
+        </section>
+    </div>
+</div>
+
+
